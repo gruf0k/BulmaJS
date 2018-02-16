@@ -2,11 +2,11 @@
 layout: default
 ---
 
-<div class="hero is-primary is-medium">
+<div class="hero is-primary is-medium is-bold">
     <div class="hero-body">
         <div class="container">
-            <h1 class="title">Documentation</h1>
-            <h2 class="subtitle">BulmaJS is an unofficial Javascript extension for the Bulma CSS framework.</h2>
+            <h1 class="title">BulmaJS</h1>
+            <h2 class="subtitle">The unofficial, ES6, no-dependency Javascript library for the Bulma CSS framework</h2>
         </div>
     </div>
 </div>
@@ -15,64 +15,41 @@ layout: default
 
 <section class="section">
     <div class="container">
-        <h3 class="title">Install via NPM</h3>
-        <h4 class="subtitle">This is the recommended method.</h4>
-        <figure class="highlight">
-            <pre>
-                <code>npm install @vizuaalog/bulmajs</code>
-            </pre>
-        </figure>
-
-        <h3 class="title">Install manually</h3>
-        <h4 class="subtitle">Alternativly, you can download manually via Git.</h4>
-        <figure class="highlight">
-            <pre>
-                <code>git clone https://github.com/VizuaaLOG/BulmaJS.git</code>
-            </pre>
-        </figure>
-
-        <h3 class="title">Using ES6 versions</h3>
-        <h4 class="subtitle">This requires a build process to be in-place to transpile the ES6 code to ES5.</h4>
-
         <div class="content">
-            <p>The easiest way to get started with BulmaJS is to load everything.</p>
-        </div>
+            <h3 class="title is-4">Installation</h3>
+            <p>If you're familiar with NPM then BulmaJS is a breeze to install.</p>
+            
+            {% highlight bash %}
+                {%- include code/installation/npm.sh -%}
+            {% endhighlight %}
 
-        {% highlight javascript %}
-            {%- include code/import-src.js -%}
-        {% endhighlight %}
+            <p>If you're not familiar with NPM or are not using in your project, you can instead download and copy the BulmaJS files into your project manually. I would highly recommend NPM is used as it makes it much easier to receive bug fixing updates, or new features when you need them.</p>
 
-        <div class="content">
-            <p>For production I would recommend only including the plugins you need. So, if you need to use Notification and Navbar.</p>
-        </div>
+            <p>If your using Git then you can clone the repository to a location of your choice.</p>
 
-        {% highlight javascript %}
-            {%- include code/import-singular.js -%}
-        {% endhighlight %}
+            {% highlight bash %}
+                {%- include code/installation/git.sh -%}
+            {% endhighlight %}
 
-        <h3 class="title">Using ES5 versions</h3>
-        <h4 class="subtitle">Useful if you do not have a build process in place.</h4>
+            <h3 class="title is-4">Usage</h3>
+            <p>BulmaJS is written using the ES6 Javascript version. This means that for the best browser compatibility the Javascript files need to be compiled to standard ES5 first. Each BulmaJS release comes with a range of files within a <code>dist</code> folder. These files are already compiled and can be loaded straight into a webpage.</p>
+            
+            <p>If you're only using one BulmaJS plugin, for example the Navbar, you can simply only load the <code>navbar.js</code> file inside the <code>dist</code> folder. This will load in the BulmaJS core (which is needed by all plugins) along with only the navbar plugin, keeping your file sizes as small as possible.</p>
 
-        <div class="content">
-            <p>If you would prefer to include the JS files directly in your HTML, without any transpiling you can still do this through the <code>dist</code> folder. This method provides limited flexability and so is not the recommended way for production.</p>
+            <p>If you're using a large amount of BulmaJS plugins, then it's advised to either include the entire <code>bulma.js</code> file that's inside the <code>dist</code> folder. Or use your own build process to create your own custom BulmaJS bundle. Using ES6 building your own bundle is as easy as just importing the plugins you would like to use.</p>
 
-            <p>If you would like to include a single plugin you can include that plugin using the below syntax. This should be placed in the closing body of your page, so that the DOM has loaded ready for the plugin to search for any DOM apis.</p>
-        </div>
+            {% highlight javascript %}
+                {%- include code/usage/custom.js -%}
+            {% endhighlight %}
 
-        <div class="notification is-warning">
-            This method is not recommended if you are using more than one plugin, as each independent file has the core packaged with it. It is recommended to instead use the ES6 method to build your own collection.
-        </div>
+            <p>This will now automatically include the BulmaJS core, and after your build process has run. You'll have your own custom BulmaJS bundle.</p>
 
-        {% highlight html %}
-            {%- include code/import-es5-singular.html -%}
-        {% endhighlight %}
+            <p>While either option is available, I'll always recommend the ES6 approach. While it does require a little bit of setup if you do not already have a build process in place, it is much more flexible and ensures you're only pulling in code you're using.</p>
 
-        <div class="content">
-            <p>Finally, to include all of the BulmaJS plugins, you include the <code>bulma.js</code> file inside the <code>dist</code> folder.</p>
-        </div>
+            <h3 class="title is-4">Found an issue or need some help?</h3>
+            <p>If you've found an issue with BulmaJS, or have a new feature you'd love to see please open an issue, detailing what the problem is, how to reproduce it and any other helpful information such as browser version and the version of the library you're using. Of cource, if possible a pull request to implement some kind of fix, would also be super useful!</p>
 
-        {% highlight html %}
-            {%- include code/import-es5-all.html -%}
-        {% endhighlight %}
+            <p>If you've thought of a new feature you'd like to see in the library, please do open an issue describing the feature and providing a use case or two. The library is split into 'plugins' that are all separate from each other. While the core file will be heavily restricted on what can/cannot be included, anyone can submit a useful plugin, they are all optional after all!</p>
+        </div>    
     </div>
 </section>
