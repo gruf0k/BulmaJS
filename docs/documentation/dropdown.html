@@ -1,92 +1,56 @@
 ---
-layout: default
-title: Dropdown | BulmaJS Documentation
+layout: docs
+title: Dropdown
+sub_title: This plugin adds the click toggle functionality to a dropdown.
+since: 0.1.0
+dom_api: true
+js_api: false
 ---
 
-<div class="hero is-primary">
-    <div class="hero-body">
-        <div class="container">
-            <h1 class="title">Dropdown</h1>
+<p>By default the Bulma dropdown component can only be shown by adding a <code>is-active</code> class to the dropdown container. This requires a little bit of Javascript to detect a click and track the current state of the dropdown.</p>
 
-            <div class="field is-grouped is-grouped-multiline">
-                <div class="control">
-                    <div class="tags has-addons">
-                        <span class="tag">since</span>
-                        <span class="tag is-info">0.1.0</span>
-                    </div>
-                </div>
+<p>The below example shows an example dropdown component. Along with the example markup. Note that the only thing you need to do is add the <code>data-bulma="dropdown"</code> attribute to the dropdown container and the <code>data-trigger</code> attribute to the button or other element you would like to trigger the dropdown to show or hide. The library will handle the rest.</p>
 
-                <div class="control">
-                    <div class="tags has-addons">
-                        <span class="tag">DOM API</span>
-                        <span class="tag is-success">Yes</span>
-                    </div>
-                </div>
+<div class="columns is-multiline">
+    <div class="column is-3">
+        {% include code/dropdown/markup.html %}
+    </div>
 
-                <div class="control">
-                    <div class="tags has-addons">
-                        <span class="tag">JS API</span>
-                        <span class="tag is-danger">No</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="column is-9">
+        {% highlight html %}
+            {%- include code/dropdown/markup.html -%}
+        {% endhighlight %}
     </div>
 </div>
 
-{% include notice.html %}
+<hr>
 
-<section class="section">
-    <div class="container">
-        <h2 class="title">Dropdown toggle</h2>
-        <h3 class="subtitle">Adds the toggle functionality to a dropdown component. If you are using <code>is-hover</code> this is not required.</h3>
+<h3 class="title is-4">DOM options</h3>
+<table class="table is-striped is-fullwidth">
+    <thead>
+        <tr>
+            <th>Option name</th>
+            <th>Required</th>
+            <th>Default</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>data-bulma</td>
+            <td>Yes</td>
+            <td>Nothing</td>
+            <td>String</td>
+            <td>This is the component type, to enable the dropdown functionality this should be <code>dropdown</code>.</td>
+        </tr>
 
-        <div class="content">
-            <p>To add the JS magic to a dropdown component, add a <code>data-bulma="dropdown"</code> attribute to the main dropdown element. Also add <code>data-trigger</code> to the button element. The rest will be taken care off behind the scenes.</p>
-        </div>
-
-        <div class="columns is-multiline">
-            <div class="column is-3">
-                {% include code/dropdown/markup.html %}
-            </div>
-
-            <div class="column is-9">
-                {% highlight html %}
-                    {%- include code/dropdown/snippet.html -%}
-                {% endhighlight %}
-            </div>
-        </div>
-
-        <hr>
-
-        <h2 class="title">DOM options</h2>
-        <table class="table is-striped is-fullwidth">
-            <thead>
-                <tr>
-                   <th>Option name</th>
-                   <th>Required</th>
-                   <th>Default</th>
-                   <th>Type</th>
-                   <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>data-bulma</td>
-                    <td>Yes</td>
-                    <td>Nothing</td>
-                    <td>String</td>
-                    <td>This is the component type, to enable the dropdown functionality this should be <code>dropdown</code>.</td>
-                </tr>
-
-                <tr>
-                    <td>data-trigger</td>
-                    <td>Yes</td>
-                    <td>Nothing</td>
-                    <td>String</td>
-                    <td>The element you would like to be used as the trigger. This will assign the <code>click</code> event listener.</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</section>
+        <tr>
+            <td>data-trigger</td>
+            <td>Yes</td>
+            <td>Nothing</td>
+            <td>String</td>
+            <td>The element you would like to be used as the trigger. This will assign the <code>click</code> event listener.</td>
+        </tr>
+    </tbody>
+</table>

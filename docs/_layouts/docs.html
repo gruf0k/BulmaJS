@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<div class="hero is-primary is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">{{ page.title }}</h1>
+            <h2 class="subtitle">{{ page.sub_title }}</h2>
+
+            <div class="field is-grouped is-grouped-multiline">
+                <div class="control">
+                    <div class="tags has-addons">
+                        <span class="tag">since</span>
+                        <span class="tag is-info">{{ page.since }}</span>
+                    </div>
+                </div>
+
+                <div class="control">
+                    <div class="tags has-addons">
+                        <span class="tag">DOM API</span>
+                        {% if(page.dom_api) %}
+                            <span class="tag is-success">Yes</span>
+                        {% else %}
+                            <span class="tag is-danger">No</span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="control">
+                    <div class="tags has-addons">
+                        <span class="tag">JS API</span>
+                        {% if(page.js_api) %}
+                            <span class="tag is-success">Yes</span>
+                        {% else %}
+                            <span class="tag is-danger">No</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div class="content">
+            {{ content }}
+        </div>  
+    </div>
+</section>
