@@ -1,45 +1,21 @@
 ---
-layout: default
-title: Notification | BulmaJS Documentation
+layout: docs
+title: Notification
+sub_title: This plugin adds the toggle behaviour, along with other handy features to the Notification component.
+since: 0.1.0
+dom_api: true
+js_api: true
 ---
-
-<div class="hero is-primary">
-    <div class="hero-body">
-        <div class="container">
-            <h1 class="title">Notification</h1>
-
-            <div class="field is-grouped is-grouped-multiline">
-                <div class="control">
-                    <div class="tags has-addons">
-                        <span class="tag">since</span>
-                        <span class="tag is-info">0.1.0</span>
-                    </div>
-                </div>
-
-                <div class="control">
-                    <div class="tags has-addons">
-                        <span class="tag">DOM API</span>
-                        <span class="tag is-success">Yes</span>
-                    </div>
-                </div>
-
-                <div class="control">
-                    <div class="tags has-addons">
-                        <span class="tag">JS API</span>
-                        <span class="tag is-danger">Yes</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-{% include notice.html %}
 
 <section class="section">
     <div class="container">
-        <h2 class="title">Dismissable notifications</h2>
-        <h3 class="subtitle">These notifications will always be visible until the user closes them.</h3>
+        <div class="content">
+            <h3 class="title is-4">Dismissable notifications</h3>
+            <p>While notifications can be great for notifying your users of something. There are some cases where you would like to provide the user the ability to close (dismiss) the notification. The notification plugin adds the ability to dismiss a notification.</p>
+            <p>When creating the notification via Javascript you simply add the <code>isDismissable: true</code> property inside the options object. This will automatically add the close button and listen for it's click handler.</p>
+            <p>Alternativly, if you're using the Data API you can instead add the delete button to the markup, and the plugin will work everything out for you.</p>
+        </div>
+
         <div class="columns">
             <div id="dismissable-notification" class="column is-6"></div>
 
@@ -50,10 +26,10 @@ title: Notification | BulmaJS Documentation
             </div>
         </div>
 
-        <hr>
-
-        <h2 class="title">Auto dismissing</h2>
-        <h3 class="subtitle">These notifications will automatically close after the defined millisecond interval.</h3>
+        <div class="content">
+            <h3 class="title is-4">Automatically dismiss</h3>
+            <p>There may be a need to automatically dismiss a notification. You can easily accomplish this by either specifying a <code>dismissInterval</code> property inside the Javascript options object or by using the <code>data-dismiss-interval</code> when using the Data API. Both of these methods will accept a integer representing the number of milliseconds to wait before hiding the notification.</p>
+        </div>
         <div class="columns">
             <div id="auto-dismissing-notification" class="column is-6"></div>
 
@@ -64,215 +40,158 @@ title: Notification | BulmaJS Documentation
             </div>
         </div>
 
-        <hr>
-
-        <h2 class="title">Destroy on dismiss</h2>
-        <h3 class="subtitle">By default when a notification is dismissed it will be destroyed. You can configure the notification to only hide itself.</h3>
-        <div class="columns">
-            <div id="destroy-dismiss-notification" class="column is-6"></div>
-
-            <div class="column is-6">
-                {% highlight javascript %}
-                    {%- include code/notification/destroy-dismiss.js -%}
-                {% endhighlight %}
-            </div>
+        <div class="content">
+            <h3 class="title is-4">Destroy the element when dismissed</h3>
+            <p>If you want to remove the element from the page when it has been dismissed. You can add the <code>destroyOnDismiss: true</code> property to the Javascript object. Alternativly, you can add the <code>data-destroy</code> attribute to the element via the Data API.</p>
         </div>
 
-        <hr>
-
-        <h2 class="title">Colors</h2>
-        <h3 class="subtitle">By passing a <code>color</code> property, you can choose what notification color you would like.</h3>
-        <div class="columns">
-            <div id="color-notification" class="column is-6"></div>
-
-            <div class="column is-6">
-                {% highlight javascript %}
-                    {%- include code/notification/color.js -%}
-                {% endhighlight %}
-            </div>
+        <div class="content">
+            <h3 class="title is-4">Changing the colour</h3>
+            <p>If you're using Javascript to create your notification component, you can pass an additional <code>colour</code> property to the options object. This property will accept a string representing the colour/state you would like the notification to take. <strong>Just to note, this property is taken as is with the <code>is-</code> prefix added. This means you can provide you're own custom colours to this if you wish.</strong></p>
         </div>
 
-        <hr>
-
-        <h2 class="title">Visibility</h2>
-        <h3 class="subtitle">By default a notification created via Javascript is hidden. You can show it via the <code>show</code>method. A <code>hide</code> method also exists.</h3>
-        <div class="columns">
-            <div id="visibility-notification" class="column is-6">
-                <button id="visiblity-toggle" class="button">Toggle notification</button>
-            </div>
-
-            <div class="column is-6">
-                {% highlight javascript %}
-                    {%- include code/notification/visibility.js -%}
-                {% endhighlight %}
-            </div>
+        <div class="content">
+            <h3 class="title is-4">Changing the size</h3>
+            <p>Similar to how you would go about changing the colour of your notification if using the Javascript API, you can also adjust the size. Simply pass a <code>size</code> option to the options object, specifying the size you would like to use.</p>
         </div>
 
-        <hr>
+        <div class="content">
+            <h3 class="title is-4">Methods</h3>
+            <table class="table is-striped is-fullwidth">
+                <thead>
+                    <tr>
+                    <th>Method name</th>
+                    <th>Parameters</th>
+                    <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>show()</td>
+                        <td>None</td>
+                        <td>This will show the notification (remove the <code>is-hidden</code> class.</td>
+                    </tr>
 
-        <h2 class="title">Data attribute API</h2>
-        <h3 class="subtitle">Notifications can also be created without touching a line of Javascript.</h3>
-        <div class="columns">
-            <div class="column is-6">
-                <div class="notification is-info" data-bulma="notification" data-dismiss-interval="3000">
-                    <button class="delete"></button>
-                    I will dismiss in 3 seconds. And I was created only with HTML.
-                </div>
+                    <tr>
+                        <td>hide()</td>
+                        <td>None</td>
+                        <td>This will hide the notification (add the <code>is-hidden</code> class.</td>
+                    </tr>
+                </tbody>
+            </table>
 
-                <div class="notification is-success" data-bulma="notification">
-                    <button class="delete"></button>
-                    I have to be manually dismissed.
-                </div>
+            <hr>
 
-                <div class="notification is-primary" data-bulma="notification" data-dismiss-interval="6000">
-                    Removing the delete button still allows the notification to auto close.
-                </div>
-            </div>
+            <h3 class="title is-4">Javascript options</h3>
+            <table class="table is-striped is-fullwidth">
+                <thead>
+                    <tr>
+                    <th>Option name</th>
+                    <th>Required</th>
+                    <th>Default</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>body</td>
+                        <td>Yes</td>
+                        <td><code>''</code></td>
+                        <td>String</td>
+                        <td>This is the body of the notification.</td>
+                    </tr>
 
-            <div class="column is-6">
-                {% highlight html %}
-                    {%- include code/notification/dom.html -%}
-                {% endhighlight %}
-            </div>
+                    <tr>
+                        <td>parent</td>
+                        <td>No</td>
+                        <td><code>document.body</code></td>
+                        <td>HTMLElement</td>
+                        <td>This is the element you would like the notification to be appended to.</td>
+                    </tr>
+
+                    <tr>
+                        <td>color</td>
+                        <td>No</td>
+                        <td><code>''</code></td>
+                        <td>String</td>
+                        <td>This is the color modifer to add to the notification. For example for <code>is-info</code> you would set color to <code>info</code>.</td>
+                    </tr>
+
+                    <tr>
+                        <td>dismissInterval</td>
+                        <td>No</td>
+                        <td><code>null</code></td>
+                        <td>Integer</td>
+                        <td>This is the time in milliseconds the notification is visible.</td>
+                    </tr>
+
+                    <tr>
+                        <td>isDismissable</td>
+                        <td>No</td>
+                        <td><code>false</code></td>
+                        <td>Boolean</td>
+                        <td>Would you like the notification to be dismissable, we will also add the <code>delete</code> button to the rendered HTML.</td>
+                    </tr>
+
+                    <tr>
+                        <td>destroyOnDismiss</td>
+                        <td>No</td>
+                        <td><code>true</code></td>
+                        <td>Boolean</td>
+                        <td>Would you like the notification to be destroyed when dismissed? This will remove the HTML and also unregister events.</td>
+                    </tr>
+
+                    <tr>
+                        <td>element</td>
+                        <td>No</td>
+                        <td><code>true</code></td>
+                        <td>HTMLElement</td>
+                        <td>This is a reference to a <code>.notification</code> element. Generally you do not need to include this value, it is primarily used for the automatic DOM parsing.</td>
+                    </tr>
+
+                    <tr>
+                        <td>closeButton</td>
+                        <td>No</td>
+                        <td><code>&lt;button class="delete"&gt;&lt;/button&gt;</code></td>
+                        <td>HTMLElement</td>
+                        <td>This is the element you would like to be used when dismissing the notification.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr>
+
+            <h3 class="title is-4">DOM Options</h3>
+            <table class="table is-striped is-fullwidth">
+                <thead>
+                    <tr>
+                    <th>Option name</th>
+                    <th>Required</th>
+                    <th>Default</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>data-bulma</td>
+                        <td>Yes</td>
+                        <td>Nothing</td>
+                        <td>String</td>
+                        <td>This is the component type, to use the notification component this must be <code>notification</code>.</td>
+                    </tr>
+
+                    <tr>
+                        <td>data-dismiss-interval</td>
+                        <td>No</td>
+                        <td><code>null</code></td>
+                        <td>Integer</td>
+                        <td>The amount of time in milliseconds until the notification is automatically dismissed.</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
-        <hr>
-
-        <h2 class="title">Methods</h2>
-        <table class="table is-striped is-fullwidth">
-            <thead>
-                <tr>
-                   <th>Method name</th>
-                   <th>Parameters</th>
-                   <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>show()</td>
-                    <td>None</td>
-                    <td>This will show the notification (remove the <code>is-hidden</code> class.</td>
-                </tr>
-
-                <tr>
-                    <td>hide()</td>
-                    <td>None</td>
-                    <td>This will hide the notification (add the <code>is-hidden</code> class.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <hr>
-
-        <h2 class="title">Javascript options</h2>
-        <table class="table is-striped is-fullwidth">
-            <thead>
-                <tr>
-                   <th>Option name</th>
-                   <th>Required</th>
-                   <th>Default</th>
-                   <th>Type</th>
-                   <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>body</td>
-                    <td>Yes</td>
-                    <td><code>''</code></td>
-                    <td>String</td>
-                    <td>This is the body of the notification.</td>
-                </tr>
-
-                <tr>
-                    <td>parent</td>
-                    <td>No</td>
-                    <td><code>document.body</code></td>
-                    <td>HTMLElement</td>
-                    <td>This is the element you would like the notification to be appended to.</td>
-                </tr>
-
-                <tr>
-                    <td>color</td>
-                    <td>No</td>
-                    <td><code>''</code></td>
-                    <td>String</td>
-                    <td>This is the color modifer to add to the notification. For example for <code>is-info</code> you would set color to <code>info</code>.</td>
-                </tr>
-
-                <tr>
-                    <td>dismissInterval</td>
-                    <td>No</td>
-                    <td><code>null</code></td>
-                    <td>Integer</td>
-                    <td>This is the time in milliseconds the notification is visible.</td>
-                </tr>
-
-                <tr>
-                    <td>isDismissable</td>
-                    <td>No</td>
-                    <td><code>false</code></td>
-                    <td>Boolean</td>
-                    <td>Would you like the notification to be dismissable, we will also add the <code>delete</code> button to the rendered HTML.</td>
-                </tr>
-
-                <tr>
-                    <td>destroyOnDismiss</td>
-                    <td>No</td>
-                    <td><code>true</code></td>
-                    <td>Boolean</td>
-                    <td>Would you like the notification to be destroyed when dismissed? This will remove the HTML and also unregister events.</td>
-                </tr>
-
-                <tr>
-                    <td>element</td>
-                    <td>No</td>
-                    <td><code>true</code></td>
-                    <td>HTMLElement</td>
-                    <td>This is a reference to a <code>.notification</code> element. Generally you do not need to include this value, it is primarily used for the automatic DOM parsing.</td>
-                </tr>
-
-                <tr>
-                    <td>closeButton</td>
-                    <td>No</td>
-                    <td><code>&lt;button class="delete"&gt;&lt;/button&gt;</code></td>
-                    <td>HTMLElement</td>
-                    <td>This is the element you would like to be used when dismissing the notification.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <hr>
-
-        <h2 class="title">DOM options</h2>
-        <table class="table is-striped is-fullwidth">
-            <thead>
-                <tr>
-                   <th>Option name</th>
-                   <th>Required</th>
-                   <th>Default</th>
-                   <th>Type</th>
-                   <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>data-bulma</td>
-                    <td>Yes</td>
-                    <td>Nothing</td>
-                    <td>String</td>
-                    <td>This is the component type, to use the notification component this must be <code>notification</code>.</td>
-                </tr>
-
-                <tr>
-                    <td>data-dismiss-interval</td>
-                    <td>No</td>
-                    <td><code>null</code></td>
-                    <td>Integer</td>
-                    <td>The amount of time in milliseconds until the notification is automatically dismissed.</td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 </section>
 
